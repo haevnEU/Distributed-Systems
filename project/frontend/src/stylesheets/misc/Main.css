@@ -1,0 +1,20 @@
+html, body {
+    width: 100%;
+    padding: 0;
+    max-width: 140ch;
+    margin: auto;
+    text-align: center;
+}
+
+.main {
+    z-index: 100;
+    margin-top: 15px;
+    width: 100%;
+    background-color: var(--page-main);
+}
+
+.footer {
+    bottom: 0px;
+    height: 48px;
+    background-color: white;
+}

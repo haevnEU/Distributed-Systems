@@ -1,0 +1,36 @@
+.hidden {
+    display: none !important;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.show-scrollbar-y {
+    overflow-y: scroll !important;
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+hr {
+    width: 75%;
+    opacity: 50%;
+}

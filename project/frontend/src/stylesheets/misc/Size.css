@@ -1,0 +1,19 @@
+.full-height {
+    height: 100% !important;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.auto-height {
+    height: auto !important;
+}
+
+.auto-width {
+    width: auto !important;
+}
+
+.available-height {
+    height: available !important;
+}

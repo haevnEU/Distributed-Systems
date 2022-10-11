@@ -1,0 +1,22 @@
+.table {
+    width:100%;
+    border:1px solid #eeeeee;
+}
+
+.table-header {
+    background: #000 !important;
+    color: white;
+}
+
+.table tr:nth-of-type(odd) {
+    background-color: lightgray;
+}
+
+th, td, table {
+    border-collapse: collapse;
+    padding: 10px 0;
+}
+
+.table-row:hover {
+    background-color: darkgray !important;
+}

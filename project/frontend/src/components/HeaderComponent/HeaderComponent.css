@@ -1,0 +1,18 @@
+.header {
+    flex: 0 0 auto;
+    width: calc(100%);
+    top: 0;
+    position: sticky;
+    z-index: 1000;
+    background: var(--header-background);
+    color: var(--header-text);
+    /*border-bottom: 1px solid lightgray;
+    box-shadow: rgba(193, 153, 11, 0.31) 2px 1px 9px 0px;
+    background: rgb(45,181,45);*/
+}
+
+.header-nav {
+    background-color: inherit;
+    /*justify-content: space-between;*/
+    /*margin-left: 271px;*/
+}

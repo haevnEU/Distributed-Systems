@@ -1,0 +1,26 @@
+:root {
+    /* HEADER */
+    --header-background: #202020;
+    --header-text: #F1F1F1;
+
+    --header-menu-button-background: inherit;
+
+    --header-menu-button-hover-background: white;
+    --header-menu-button-hover-text: #202020;
+
+    --header-menu-button-active-background: var(--page-main);
+    --header-menu-button-active-text: #202020;
+
+    /* PAGE */
+    --page-main: white;
+    --page-side: blue;
+
+    /* DROPDOWN MENU */
+    --dropdown-menu-background: gray;
+    --dropdown-menu-color: white;
+
+    --dropdown-menu-option-color: white;
+
+    /* TWITTER */
+    --tweet-background: #d3d3d3;
+}

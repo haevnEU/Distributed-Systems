@@ -1,0 +1,469 @@
+{
+  openapi: "3.0.1",
+  info: {
+    title: "OpenAPI definition",
+    version: "v0"
+  },
+  servers: [
+    {
+      url: "http://localhost:8080",
+      description: "Generated server url"
+    }
+  ],
+  paths: {
+           /twitter/user/findby/username/{name}: {
+    get: {
+      tags: [
+          "twitter-controller"
+      ],
+      summary: "Sucht ein Nutzer anhand seines Nutzernames",
+      description: "Dieser Endpunkt durchsucht Twitter nach einem Nutzer anhand seines Nutzernames.",
+      operationId: "findUserByName",
+      parameters: [
+        {
+          name: "name",
+          in: "path",
+          required: true,
+          schema: {
+            type: "string"
+          }
+        }
+      ],
+      responses: {
+        200: {
+          description: "Nutzer information die zu dem übergebenen Nutzernamen gehören",
+          content: {
+            application/json: {
+              schema: {
+                $ref: "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        404: {
+          description: "Es konnte kein Nutzer für den geforderten Nutzer gefunden werden.",
+          content: {
+            /*: {
+              schema: {
+                $ref: "#/components/schemas/User"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+           /twitter/user/findby/id/{id}: {
+    get: {
+      tags: [
+          "twitter-controller"
+      ],
+      summary: "Sucht ein Nutzer anhand seiner userID",
+      description: "Dieser Endpunkt durchsucht Twitter nach einem Nutzer anhand seiner nutzer id.",
+      operationId: "findUserById",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          schema: {
+            type: "string"
+          }
+        }
+      ],
+      responses: {
+        200: {
+          description: "Nutzer information die zu der übergebenen Nutzer ID gehören",
+          content: {
+            application/json: {
+              schema: {
+                $ref: "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        404: {
+          description: "Es konnte kein Nutzer zur übergebenen Nutzer ID gefunden werden.",
+          content: {
+            /*: {
+              schema: {
+                $ref: "#/components/schemas/User"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+           /twitter/tweets/findby/user/{ids}: {
+    get: {
+      tags: [
+          "twitter-controller"
+      ],
+      summary: "Sucht tweets eines Nutzers",
+      description: "Dieser Endpunkt durchsucht Twitter nach den aktuellsten Tweets eines Nutzer. Als Argument wird die Nutzer ID erwartet.",
+      operationId: "findTweetsByUser",
+      parameters: [
+        {
+          name: "ids",
+          in: "path",
+          required: true,
+          schema: {
+            type: "string"
+          }
+        }
+      ],
+      responses: {
+        200: {
+          description: "Liste mit allen Tweets die zu dem übergebenen Nutzer gehören.",
+          content: {
+            application/json: {
+              schema: {
+                $ref: "#/components/schemas/User"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+           /twitter/tweets/findby/tags/{tags}: {
+    get: {
+      tags: [
+          "twitter-controller"
+      ],
+      summary: "Sucht tweets anhand einer Entität",
+      description: "Dieser Endpunkt durchsucht Twitter nach den aktuellsten Tweets einer Entität. Eine Entität kann unter anderem ein Hashtag darstellen aber auch ein Cashtag",
+      operationId: "findTweetsBy",
+      parameters: [
+        {
+          name: "tags",
+          in: "path",
+          required: true,
+          schema: {
+            type: "string"
+          }
+        }
+      ],
+      responses: {
+        200: {
+          description: "Liste mit allen Tweets die zu der Entität gehören.",
+          content: {
+            application/json: {
+              schema: {
+                $ref: "#/components/schemas/User"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+    /twitter/test: {
+      get: {
+        tags: [
+            "twitter-controller"
+        ],
+        summary: "Testet den TwitterController.",
+        description: "Dieser Endpunkt ist dafür da um die Erreichbarkeit des Twitterendpunkts zu testen.",
+        operationId: "test",
+        responses: {
+          200: {
+            description: "Es wird immer 200 OK zurück gegeben",
+            content: {
+              application/json: {
+                schema: {
+                  $ref: "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    /popularitytrend: {
+      get: {
+        tags: [
+            "sentiment-analysis-controller"
+        ],
+        summary: "Sucht Meinungen aller Tweets und fast diese zusammen.",
+        description: "Dieser Endpunkt liefert eine Meinungsübersicht aller Tweets zu den folgenden Hastags/ Benutzern: @SignatureChain, @wavesprotocol, @neutrino_proto, $Waves, $USDN, @sasha35625",
+        operationId: "getPopularityTrend",
+        responses: {
+          200: {
+            description: "Kummulierte Meinungsübersicht der Tweets.",
+            content: {
+              application/json: {
+                schema: {
+                  $ref: "#/components/schemas/SentimentResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    /getSharpeRatio: {
+      get: {
+        tags: [
+            "waves-controller"
+        ],
+        summary: "Berechnet den SharpeRatio von Waves Coin",
+        description: "Dieser Endpunkt berechnet den aktuellen Sharpe Ratio Wert von Waves Coin",
+        operationId: "getSharpeRatio",
+        responses: {
+          200: {
+            description: "Sharpe Ratio vom Waves Coin.",
+            content: {
+              application/json: {
+                schema: {
+                  type: "number",
+                  format: "double"
+                }
+              }
+            }
+          },
+          503: {
+            description: "Externe API nicht verfügbar.",
+            content: {
+              /*: {
+                schema: {
+                  type: "number",
+                  format: "double"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    /getInterest: {
+      get: {
+        tags: [
+            "py-waves-controller"
+        ],
+        summary: "Anzeige des MovingAverage von Wave Coin",
+        description: "Dieser Endpunkt zeigt den aktuellen Moving Average von Wave Coin an.",
+        operationId: "getInterest",
+        responses: {
+          200: {
+            description: "Zinsdaten für ausgewählte Echtwährungen.",
+            content: {
+              application/json: {
+                schema: {
+                  $ref: "#/components/schemas/Interest"
+                }
+              }
+            }
+          },
+          503: {
+            description: "Externe API nicht verfügbar.",
+            content: {
+              /*: {
+                schema: {
+                  $ref: "#/components/schemas/Interest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    /getCurrentPrice: {
+      get: {
+        tags: [
+            "waves-controller"
+        ],
+        summary: "Anzeige des aktuellen Waves Coin Preis",
+        description: "Dieser Endpunkt zeigt den aktuellen Preis von Waves Coin an",
+        operationId: "getCurrentPrice",
+        responses: {
+          200: {
+            description: "Aktueller Wert für einen Waves Coin in USD.",
+            content: {
+              application/json: {
+                schema: {
+                  type: "number",
+                  format: "double"
+                }
+              }
+            }
+          },
+          503: {
+            description: "Externe API nicht verfügbar.",
+            content: {
+              /*: {
+                schema: {
+                  type: "number",
+                  format: "double"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    /getAllPricesAndMovingAverage: {
+      get: {
+        tags: [
+            "waves-controller"
+        ],
+        summary: "Anzeige des MovingAverage von Wave Coin",
+        description: "Dieser Endpunkt zeigt den aktuellen Moving Average von Wave Coin an.",
+        operationId: "getAllPricesAndMovingAverage",
+        parameters: [
+          {
+            name: "period",
+            in: "query",
+            required: true,
+            schema: {
+              type: "integer",
+              format: "int32"
+            }
+          }
+        ],
+        responses: {
+          200: {
+            description: "Preisdaten für ein Jahr und ein entsprechend der period festgelegten Moving Average.",
+            content: {
+              application/json: {
+                schema: {
+                  $ref: "#/components/schemas/PriceRange"
+                }
+              }
+            }
+          },
+          400: {
+            description: "Es dürfen nur positive Zahlen für period genutzt werden.",
+            content: {
+              /*: {
+                schema: {
+                  $ref: "#/components/schemas/PriceRange"
+                }
+              }
+            }
+          },
+          503: {
+            description: "Externe API nicht verfügbar.",
+            content: {
+              /*: {
+                schema: {
+                  $ref: "#/components/schemas/PriceRange"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  components: {
+    schemas: {
+      User: {
+        type: "object",
+        properties: {
+          id: {
+            type: "string"
+          },
+          name: {
+            type: "string"
+          },
+          username: {
+            type: "string"
+          }
+        }
+      },
+      SentimentResult: {
+        type: "object",
+        properties: {
+          positive: {
+            type: "number",
+            format: "double"
+          },
+          neutral: {
+            type: "number",
+            format: "double"
+          },
+          negative: {
+            type: "number",
+            format: "double"
+          }
+        }
+      },
+      Interest: {
+        type: "object",
+        properties: {
+          rubn-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          eth-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          eurn-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          brln-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          tryn-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          usdt-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          usdc-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          usdn-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          uahn-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          jpyn-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          gbpn-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          cnyn-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          btc-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          },
+          nsbt-apy: {
+            $ref: "#/components/schemas/JsonNode"
+          }
+        }
+      },
+      JsonNode: {
+        type: "object"
+      },
+      Price: {
+        type: "object",
+        properties: {
+          priceEod: {
+            type: "number",
+            format: "double"
+          },
+          movingAvg: {
+            type: "number",
+            format: "double"
+          }
+        }
+      },
+      PriceRange: {
+        type: "object",
+        properties: {
+          data: {
+            type: "object",
+            additionalProperties: {
+              $ref: "#/components/schemas/Price"
+            }
+          }
+        }
+      }
+    }
+  }
+}

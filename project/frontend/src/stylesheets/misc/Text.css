@@ -1,0 +1,25 @@
+.bold {
+    font-weight: bold;
+}
+
+.text-white {
+    color: white;
+}
+
+h1 {
+    color: #7c795d;
+    font-family: 'Trocchi', serif;
+    font-size: 35px;
+    font-weight: normal;
+    line-height: 48px;
+    margin: 0;
+}
+
+h3 {
+    color: #7c795d;
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 48px;
+    margin: 0;
+}

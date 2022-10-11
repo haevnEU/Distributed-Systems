@@ -1,0 +1,24 @@
+.nav {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--header-menu-button-background);
+    padding-left: 4px;
+}
+
+.nav-menu-button {
+    background-color: var(--header-menu-button-background);
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 16px 30px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.nav-menu-button:hover  {
+    background-color: var(--header-menu-button-hover-background) !important;
+    color: var(--header-menu-button-hover-text) !important;
+}
