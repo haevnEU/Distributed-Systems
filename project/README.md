@@ -14,6 +14,8 @@
 Anmerkung: Wenn es innerhalb 30 Minuten keinen Web-Traffic auf der Seite gab geht der Server in den Schlafmodus.
 Er benötigt dann bei einem erneuten Zugriff eine kurze Zeit bis die Seite wieder geladen ist.
 
+---
+
 ### Gruppenteilnehmer, Gruppe 4
 | Autoren          | Matrikelnummer | Email                                |
 |------------------|----------------|--------------------------------------|
@@ -22,6 +24,8 @@ Er benötigt dann bei einem erneuten Zugriff eine kurze Zeit bis die Seite wiede
 | Nils Milewski    |        |     |
 | Maximilian Hofer |        |  |
 | Gereon Heinemann |        |  |
+
+---
 
 ## Dokumentation
 
@@ -34,8 +38,11 @@ Das Konzept für die architektonische Lösung der Aufgabe ist in folgendem Diagr
 
 Als Code-Basis haben wir ein Mono-Repository angelegt, in dem Backend und Frontend gemeinsam verwaltet werden. Das Repository kann unter folgendem Link erreicht werden [g].
 
+---
+
 ### Backend
 Das Backend wurde mit Spring Boot umgesetzt, da es ein umfangreiches Java Framework ist, mit dem sich jeder der Gruppenteilnehmer auskennt. Als Build Tool haben wir Maven gewählt. Mit Ausnahme der Controller- und trivialen Methoden (Getter, Setter, Constructoren) wurden alle public Methoden mit Javadoc dokumentiert. Die Controller-Methoden wurden gesondert für Swagger dokumentiert, da diese Schnittstellen nach Außen sichtbar sind.
+
 #### A.	Aufbau
 Das Backend ist nach der klassischen Layer-Architektur aufgebaut. Die Controllers bieten die nach außen sichtbaren endpoints an und leiten die Anfragen direkt an den service layer weiter. Im service layer findet der Großteil der Logik statt. Beispielsweise im WavesService wird mittels der WavesUtils-Klasse die wavescap-API angesprochen, die Response in ein POJO gemappt und zurück an den Controller gesendet. Diese POJOs sind im package entities definiert und dort ebenfalls mittels Javadoc dokumentiert. Da die twitter api umfangreicher als die anderen APIs sind wurden die twitter services in einem eigenen package umgesetzt.
 #### B. Besonderheiten
@@ -48,15 +55,19 @@ Der geforderte Umgang mit der Same-Origin-Policy haben wir mittels Cross-Origin 
 Das Backend ist darauf angewiesen, dass alle vier APIs unter den angegebenen Links funktionieren. Sollte sich der Link ändern oder der Dienst nicht mehr erreichbar sein, dann funktioniert die Oberfläche ebenfalls nicht mehr.
 In der Gratisversion hat die Twitter-API eine Limitierung sowohl in den monatlichen Requests als auch in den Requests pro 15 Minuten. Ein allzu häufiges Aufrufen der Sentimentanalyse führt also unweigerlich dazu, dass die Twitter-API keine Antwort mehr sendet.
 
+---
 
 ### Frontend
 Das Frontend wurde mit ReactJS realisiert. Als Build Tool wurde sich für npm entschieden.
+
 #### A. Besonderheiten
 Zur Darstellung der einzelnen Graphen (Moving Average Chart und Segment Analysis Pie Chart) wurde die Highcharts Library genutzt bzw. dessen React Wrapper [l].
 Zur Darstellung der mathematischen Formeln für Sharpe Ratio und Moving Average's Berechnungsgrundlage wurde MathJax genutzt.[m].
+
 #### B. Limitierung
 Das Frontend ist darauf angewiesen, dass die jeweiligen API-Endpunkte im Backend erreichbar sind.
 
+---
 
 ### Deployment
 Ein lokales Deployment setzt für das Backend maven voraus, für das Frontend nodejs.
@@ -75,6 +86,8 @@ npm start
 
 Backend und Frontend werden bei heroku gehostet. Heroku ist ein Anbieter aus den USA, der gratis hosting von verschiedenen Projekten übernimmt. Um ein Projekt auf heroku hosten zu können, muss ein Account erstellt werden und über git an ein repository von heroku gepusht werden. Heroku erkennt dann anhand der Projektstruktur den Typ (beispielsweise Java Spring oder ReactJS) und führt entsprechende Scripts aus, um das Projekt unter einer öffentlich zugänglichen URL verfügbar zu machen. Für das Backend sind wir diesem Guide gefolgt [f].
 Die Swagger API des Backend-Projekts ist unter folgendem Link verfügbar [h]. Das Frontend ist unter folgendem Link verfügbar [i].
+
+---
 
 ### Links
 
